@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Ecommerce FastAPI Project</title>
+  
 </head>
 <body>
   <h1>🛒 Ecommerce API - FastAPI + MongoDB</h1>
@@ -99,7 +99,7 @@
   <p><strong>POST /orders</strong> - Add an order</p>
   <pre>
 {
-  "product_id": "your_product_id",
+  "product_id": "product_id",
   "quantity": 2,
   "customer_name": "John Doe"
 }
