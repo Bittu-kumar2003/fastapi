@@ -1,0 +1,12 @@
+services:                        
+  - type: web                     
+    name: fastapi-app             
+    runtime: python                
+    buildCommand: ""              
+    startCommand: "uvicorn main:app --host 0.0.0.0 --port 10000"
+                                  
+                                  
+                                   
+    envVars:                      
+      - key: MONGO_URI            
+        value: mongodb+srv://bittukumarprajapati2003:Kumar%40123@cluster0.qma1bzi.mongodb.net/?retryWrites=true&w=majority
