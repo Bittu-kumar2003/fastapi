@@ -1,7 +1,6 @@
 from fastapi import APIRouter
 from models.order_model import Order
 from database import order_collection
-from bson import ObjectId
 
 router = APIRouter()
 
@@ -9,6 +8,16 @@ router = APIRouter()
 def create_order(order: Order):
     result = order_collection.insert_one(order.dict())
     return {"id": str(result.inserted_id), "message": "Order placed successfully"}
+
+@router.get("/")
+def get_all_orders(limit: int = 10, offset: int = 0):
+    orders = order_collection.find().skip(offset).limit(limit)
+    result = []
+    for o in orders:
+        o["order_id"] = str(o["_id"])
+        del o["_id"]
+        result.append(o)
+    return result
 
 @router.get("/{user_id}")
 def get_orders(user_id: str, limit: int = 10, offset: int = 0):
@@ -20,4 +29,3 @@ def get_orders(user_id: str, limit: int = 10, offset: int = 0):
         del o["_id"]
         result.append(o)
     return result
-
